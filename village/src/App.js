@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
@@ -26,10 +27,15 @@ class App extends Component {
   
   
   render() {
+        const { smurfs } = this.state
     return (
       <div className="App">
         <SmurfForm />
         <Smurfs smurfs={this.state.smurfs} />
+
+        <Route path="/" exact render={(props) => <Smurfs {...props} smurfs={smurfs} />} />
+
+
       </div>
     );
   }
